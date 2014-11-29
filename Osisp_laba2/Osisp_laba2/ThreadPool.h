@@ -9,21 +9,33 @@
 #include <sys/types.h>
 #include <Wincrypt.h>
 #include <queue>
+#include <vector>
+#include "Task.h"
+
+
 using namespace std;
 
 class ThreadPool
 {
 	public:
-		ThreadPool();
+
+		ThreadPool(int threadCount);
 		~ThreadPool();
-		queue<Task*> List;
-		ThreadPool(int NumberOfThread);
+		void AddThread();
+		void AddTask(Task* task);
+		static DWORD WINAPI StaticThreadProc(CONST LPVOID lpParam);
+		void ThreadProc();
 
 	private:
-		int Number;
-		bool Active;
-		HANDLE *ThreadHandels;
-		static DWORD WINAPI ThreadProc(CONST LPVOID lpParam);
+
+		bool active;
+		int threadsCount;
+		FILE * logFile;
+		int countActiveThreads;
+		queue<Task*> taskQueue;
+		vector<HANDLE> threadHandels;
+		CRITICAL_SECTION criticalSectionForThread, criticalSectionForFile;
+		HANDLE semaphoreThread, semaphoreTask;
 
 };
 

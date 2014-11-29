@@ -7,7 +7,5 @@ public:
 	CustomTask();
 	void Execute();
 	void Message();
-	~CustomTask();
-
 };
 

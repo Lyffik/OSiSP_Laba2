@@ -6,6 +6,9 @@ Task::Task()
 {
 }
 
+void Task::Execute() {};
+
+void Task::Message() {};
 
 Task::~Task()
 {

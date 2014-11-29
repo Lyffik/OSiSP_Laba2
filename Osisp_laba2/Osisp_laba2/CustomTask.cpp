@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "CustomTask.h"
 #include <windows.h>
+#include <iostream>
+
+using namespace std;
 
 
 CustomTask::CustomTask()
@@ -9,9 +12,10 @@ CustomTask::CustomTask()
 
 void CustomTask::Execute()
 {
-	Sleep(5000);
+	Sleep(4000);
 }
 
-CustomTask::~CustomTask()
+void CustomTask::Message()
 {
+	//cout<<"Task complete";
 }
