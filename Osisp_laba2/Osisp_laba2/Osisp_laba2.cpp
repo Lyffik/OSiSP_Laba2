@@ -16,12 +16,11 @@ DWORD WINAPI ControlFunction(CONST LPVOID lpParam)
 	}
 	ThreadPool* threadPool;
 	threadPool = new ThreadPool(count);
+	puts("Enter number of task: 1, 2, 3");
+	puts("Press 'Enter' for exit");
 	int n = 0;
 	while (n != 13)
 	{
-		bool Busy = true;
-		puts("Enter number of task: 1, 2, 3");
-		puts("Press 'Enter' for exit");
 		n = _getch();
 		Task* currentTask;
 		currentTask = (Task*)new CustomTask();

@@ -12,10 +12,10 @@ CustomTask::CustomTask()
 
 void CustomTask::Execute()
 {
-	Sleep(4000);
+	Sleep(6000);
 }
 
 void CustomTask::Message()
 {
-	//cout<<"Task complete";
+	puts("Task 1 complete");
 }

@@ -23,7 +23,7 @@ class ThreadPool
 		~ThreadPool();
 		void AddThread();
 		void AddTask(Task* task);
-		static DWORD WINAPI StaticThreadProc(CONST LPVOID lpParam);
+		DWORD WINAPI ThreadProc(CONST LPVOID lpParam);
 		void ThreadProc();
 
 	private:
@@ -31,10 +31,10 @@ class ThreadPool
 		bool active;
 		int threadsCount;
 		FILE * logFile;
-		int countActiveThreads;
+		int activeThreadsCount;
 		queue<Task*> taskQueue;
 		vector<HANDLE> threadHandels;
-		CRITICAL_SECTION criticalSectionForThread, criticalSectionForFile;
+		CRITICAL_SECTION criticalSectionForThread, criticalSectionForFile,criticalSectionForTerminal;
 		HANDLE semaphoreThread, semaphoreTask;
 
 };
